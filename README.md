@@ -68,28 +68,44 @@ Geography Explorer is an interactive web-based game that tests your knowledge of
 
 ## Setup and Installation
 
-1. Clone the repository
-2. Open index.html in a web browser
-3. No additional installation required - all dependencies are loaded via CDN
+### Option 1: Deploy to Vercel (Recommended for Production)
 
-## Backend Integration (PHP)
+See [DEPLOYMENT.md](DEPLOYMENT.md) for complete deployment instructions.
 
-A simple PHP backend is included for saving and retrieving scores (leaderboard).
+Quick steps:
+1. Push your code to GitHub
+2. Connect to Vercel
+3. Create a Postgres database in Vercel
+4. Deploy!
 
-### Setup
-1. Make sure you have PHP installed and a local server (e.g., XAMPP, WAMP, MAMP).
-2. Place the `backend/` folder in your project root.
-3. Start your local server and access the game via `http://localhost/WorldMaster/index.html`.
+### Option 2: Local Development
 
-### How it Works
-- When the game ends, you will be prompted to enter your name. Your score is sent to `backend/scores.php` and saved in `scores.json`.
-- The leaderboard is displayed on the end screen, showing the top scores.
+#### Using Vercel Dev (Recommended)
+```bash
+npm install
+vercel dev
+```
 
-### Files
-- `backend/scores.php`: Handles saving and retrieving scores.
-- `backend/scores.json`: Stores the scores data.
+#### Using PHP (Legacy - Local Only)
+1. Install XAMPP/WAMP/MAMP
+2. Place project in web server directory
+3. Start server and access via `http://localhost/WorldMaster/`
 
-No database setup is required; scores are stored in a JSON file.
+## Backend Architecture
+
+### Current (Vercel-Ready)
+- **API Routes**: Node.js serverless functions in `/api` folder
+- **Database**: Vercel Postgres (PostgreSQL)
+- **Files**:
+  - `api/register.js`: User registration endpoint
+  - `api/login.js`: User authentication endpoint
+  - `api/scores.js`: Leaderboard management
+  - `schema.sql`: Database schema
+
+### Legacy (PHP - Deprecated)
+- PHP files in `/backend` folder still exist for reference
+- Use Vercel deployment for production
+- MySQL database replaced with Postgres
 
 ## Credits
 

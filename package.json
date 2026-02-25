@@ -1,0 +1,16 @@
+{
+  "name": "world-master",
+  "version": "1.0.0",
+  "description": "Geography Explorer Game",
+  "scripts": {
+    "dev": "node --version"
+  },
+  "dependencies": {
+    "@vercel/postgres": "^0.5.1",
+    "bcryptjs": "^2.4.3"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.x"
+  }
+}

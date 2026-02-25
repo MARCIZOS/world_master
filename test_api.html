@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test - World Master</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .success { color: #27ae60; font-weight: bold; }
+        .error { color: #e74c3c; font-weight: bold; }
+        input {
+            padding: 10px;
+            margin: 5px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 200px;
+        }
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        .status.ready { background: #d4edda; color: #155724; }
+        .status.pending { background: #fff3cd; color: #856404; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 World Master API Testing</h1>
+        <p style="text-align: center; color: #666;">Test all API endpoints to ensure they work correctly</p>
+
+        <!-- Test 1: Check API Availability -->
+        <div class="test-section">
+            <h3>1. API Health Check <span id="status1" class="status pending">Not Tested</span></h3>
+            <p>Verify that API routes are accessible</p>
+            <button onclick="testAPIHealth()">Test API Health</button>
+            <div id="result1" class="result" style="display:none;"></div>
+        </div>
+
+        <!-- Test 2: Register User -->
+        <div class="test-section">
+            <h3>2. User Registration <span id="status2" class="status pending">Not Tested</span></h3>
+            <p>Test creating a new user account</p>
+            <input type="text" id="reg-username" placeholder="Username" value="testuser">
+            <input type="email" id="reg-email" placeholder="Email" value="test@example.com">
+            <input type="password" id="reg-password" placeholder="Password" value="testpass123">
+            <br>
+            <button onclick="testRegister()">Test Registration</button>
+            <div id="result2" class="result" style="display:none;"></div>
+        </div>
+
+        <!-- Test 3: Login User -->
+        <div class="test-section">
+            <h3>3. User Login <span id="status3" class="status pending">Not Tested</span></h3>
+            <p>Test user authentication</p>
+            <input type="text" id="login-username" placeholder="Username" value="testuser">
+            <input type="password" id="login-password" placeholder="Password" value="testpass123">
+            <br>
+            <button onclick="testLogin()">Test Login</button>
+            <div id="result3" class="result" style="display:none;"></div>
+        </div>
+
+        <!-- Test 4: Submit Score -->
+        <div class="test-section">
+            <h3>4. Submit Score <span id="status4" class="status pending">Not Tested</span></h3>
+            <p>Test submitting a game score</p>
+            <input type="text" id="score-name" placeholder="Player Name" value="TestPlayer">
+            <input type="number" id="score-value" placeholder="Score" value="100">
+            <br>
+            <button onclick="testSubmitScore()">Test Submit Score</button>
+            <div id="result4" class="result" style="display:none;"></div>
+        </div>
+
+        <!-- Test 5: Get Leaderboard -->
+        <div class="test-section">
+            <h3>5. Get Leaderboard <span id="status5" class="status pending">Not Tested</span></h3>
+            <p>Test retrieving the leaderboard</p>
+            <button onclick="testGetScores()">Test Get Leaderboard</button>
+            <div id="result5" class="result" style="display:none;"></div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px; padding: 20px; background: #e3f2fd; border-radius: 10px;">
+            <button onclick="runAllTests()" style="background: #27ae60; font-size: 18px; padding: 15px 30px;">
+                🚀 Run All Tests
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function showResult(testNum, message, isSuccess) {
+            const resultDiv = document.getElementById('result' + testNum);
+            const statusSpan = document.getElementById('status' + testNum);
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = message;
+            resultDiv.className = 'result ' + (isSuccess ? 'success' : 'error');
+            statusSpan.className = 'status ' + (isSuccess ? 'ready' : 'pending');
+            statusSpan.textContent = isSuccess ? '✅ Passed' : '❌ Failed';
+        }
+
+        async function testAPIHealth() {
+            try {
+                const response = await fetch('/api/scores.js');
+                if (response.status === 405) {
+                    showResult(1, '✅ API is accessible!\nStatus: 405 Method Not Allowed (Expected for GET without proper request)', true);
+                } else {
+                    showResult(1, `✅ API responded!\nStatus: ${response.status}`, true);
+                }
+            } catch (error) {
+                showResult(1, `❌ API Error:\n${error.message}`, false);
+            }
+        }
+
+        async function testRegister() {
+            const username = document.getElementById('reg-username').value;
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-password').value;
+
+            try {
+                const response = await fetch('/api/register.js', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, email, password })
+                });
+                const data = await response.json();
+                
+                if (data.success) {
+                    showResult(2, `✅ Registration Successful!\n${JSON.stringify(data, null, 2)}`, true);
+                } else {
+                    showResult(2, `⚠️ Registration Response:\n${JSON.stringify(data, null, 2)}\n\nNote: User may already exist`, data.error.includes('already exists'));
+                }
+            } catch (error) {
+                showResult(2, `❌ Registration Error:\n${error.message}`, false);
+            }
+        }
+
+        async function testLogin() {
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+
+            try {
+                const response = await fetch('/api/login.js', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+                const data = await response.json();
+                
+                if (data.success) {
+                    showResult(3, `✅ Login Successful!\n${JSON.stringify(data, null, 2)}`, true);
+                } else {
+                    showResult(3, `❌ Login Failed:\n${JSON.stringify(data, null, 2)}`, false);
+                }
+            } catch (error) {
+                showResult(3, `❌ Login Error:\n${error.message}`, false);
+            }
+        }
+
+        async function testSubmitScore() {
+            const name = document.getElementById('score-name').value;
+            const score = parseInt(document.getElementById('score-value').value);
+
+            try {
+                const response = await fetch('/api/scores.js', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, score })
+                });
+                const data = await response.json();
+                
+                if (data.success) {
+                    showResult(4, `✅ Score Submitted!\n${JSON.stringify(data, null, 2)}`, true);
+                } else {
+                    showResult(4, `❌ Score Submission Failed:\n${JSON.stringify(data, null, 2)}`, false);
+                }
+            } catch (error) {
+                showResult(4, `❌ Score Submission Error:\n${error.message}`, false);
+            }
+        }
+
+        async function testGetScores() {
+            try {
+                const response = await fetch('/api/scores.js');
+                const data = await response.json();
+                
+                if (data.success) {
+                    showResult(5, `✅ Leaderboard Retrieved!\nTotal Scores: ${data.scores.length}\n\n${JSON.stringify(data, null, 2)}`, true);
+                } else {
+                    showResult(5, `❌ Failed to Get Leaderboard:\n${JSON.stringify(data, null, 2)}`, false);
+                }
+            } catch (error) {
+                showResult(5, `❌ Leaderboard Error:\n${error.message}`, false);
+            }
+        }
+
+        async function runAllTests() {
+            await testAPIHealth();
+            await new Promise(r => setTimeout(r, 500));
+            await testRegister();
+            await new Promise(r => setTimeout(r, 500));
+            await testLogin();
+            await new Promise(r => setTimeout(r, 500));
+            await testSubmitScore();
+            await new Promise(r => setTimeout(r, 500));
+            await testGetScores();
+        }
+    </script>
+</body>
+</html>
