@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>World Master • Explore & Play</title>
+  <link rel="stylesheet" href="hero.css" />
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="nav__brand" href="#">
+        <span class="pin" aria-hidden="true">📍</span>
+        WORLD MASTER
+      </a>
+
+      <nav class="nav__links" aria-label="primary">
+        <a href="#">Organizations</a>
+      </nav>
+
+      <div class="nav__actions">
+        <button class="btn btn--ghost btn-dark">Log In</button>
+        <button class="btn btn--primary btn-green">Play Now</button>
+      </div>
+
+      <button class="nav__burger" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__overlay"></div>
+
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <div class="hero__logo">WORLD <span class="pin">📍</span> MASTER</div>
+        <h1 class="hero__title">EXPLORE THE WORLD!</h1>
+        <p class="hero__subtitle">
+          Get dropped anywhere from the busy streets of New York to the beautiful beaches of Bali.
+          <br/>Join thousands of players today!
+        </p>
+      </div>
+
+      <!-- floating map card -->
+      <figure class="mapcard" aria-label="sample map">
+        <img src="https://images.unsplash.com/photo-1526779259212-939e64788e3c?q=80&w=1200&auto=format&fit=crop" alt="Map preview with location pin">
+        <figcaption class="mapcard__pin" aria-hidden="true">📍</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="container">
+      <article class="feature">
+        <img class="feature__art" src="https://images.unsplash.com/photo-1541534401786-2077eed87a74?q=80&w=1000&auto=format&fit=crop" alt="Friends playing illustration">
+        <div class="feature__copy">
+          <h3>Play with Friends</h3>
+          <p>Put your skills to the test against your friends and family. Create a private party and play together.</p>
+        </div>
+      </article>
+
+      <article class="feature feature--reverse">
+        <img class="feature__art" src="https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=1000&auto=format&fit=crop" alt="Trophies and badges">
+        <div class="feature__copy">
+          <h3>Compete against others</h3>
+          <p>Test your ability against players all across the world. Earn badges and join tournaments and events!</p>
+        </div>
+      </article>
+
+      <article class="feature">
+        <img class="feature__art" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1000&auto=format&fit=crop" alt="Organizations team">
+        <div class="feature__copy">
+          <h3>World Master for Organizations</h3>
+          <p>Run games with friends or co-workers. With Pro, invite people without subscriptions to your party or challenge.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CHAMPIONSHIP -->
+  <section class="champ">
+    <div class="container champ__grid">
+      <div>
+        <h2>World Championship 2025</h2>
+        <p>The World Master Championship 2025 is here. Follow players around the globe as they compete to make it to the finals.</p>
+        <a class="btn btn--outline btn--lg" href="#">Read More</a>
+      </div>
+      <div class="champ__badge" aria-hidden="true">
+        <div class="badge__shield">
+          <span>’25</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="container">
+      <h2 class="faq__title">Frequently Asked Questions</h2>
+      <details class="faq__item">
+        <summary>What is World Master?</summary>
+        <p>A geography guessing game where you’re dropped at a random location and must figure out where you are.</p>
+      </details>
+      <details class="faq__item">
+        <summary>I have trouble accessing my account.</summary>
+        <p>Check your email link, reset your password, or contact support for help.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Is there an app on iOS and Android?</summary>
+        <p>Coming Soon....</p>
+      </details>
+      <details class="faq__item">
+        <summary>What languages are supported?</summary>
+        <p>English first, with more languages rolling out soon.</p>
+      </details>
+      
+      </details>
+      <details class="faq__item">
+        <summary>Business enquiries</summary>
+        <p>Write to partnerships@example.com and we’ll get back to you.</p>
+      </details>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      © 2025 World Master. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Play Now button
+    const playBtn = document.querySelector('.btn-green');
+    if (playBtn) playBtn.onclick = () => window.location.href = 'register.html';
+    // Log In button
+    const loginBtn = document.querySelector('.btn-dark');
+    if (loginBtn) loginBtn.onclick = () => window.location.href = 'login.html';
+  });
+  </script>
+</body>
+</html>
