@@ -63,6 +63,7 @@ world_master/
 - [ ] Multiplayer mode
 - [ ] Leaderboards
 - [ ] Save/load system
+- [ ] Add deployment and release documentation
 
 ## 🤝 Contributing
 
