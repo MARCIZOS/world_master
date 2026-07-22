@@ -1,28 +1,32 @@
 # World Master
 
-World Master is a game project built by [@MARCIZOS](https://github.com/MARCIZOS).
+World Master is a strategy game project by [@MARCIZOS](https://github.com/MARCIZOS), focused on exploration, progression, and competitive world-building.
 
 ## 🎮 About the Game
 
-World Master is a game where players can explore, build strategy, and compete to become the ultimate world master.
+In **World Master**, players expand their influence, make strategic decisions, and compete to become the ultimate ruler.
 
-## ✨ Features
+## ✨ Core Features
 
-- Engaging gameplay
-- Strategic world-building elements
+- Exploration-based gameplay
+- Strategic world-building systems
 - Competitive progression
-- Easy to extend with new game mechanics
+- Extendable architecture for new mechanics
 
 ## 🛠️ Tech Stack
 
-- Add your engine/framework here (e.g., Unity, Unreal, Godot, JavaScript, etc.)
-- Add your language(s)
+> Update this section with your actual tools.
+
+- Engine/Framework: _TBD_ (Unity / Unreal / Godot / Web)
+- Language(s): _TBD_
+- Backend/API: Vercel Serverless Functions (`/api`)
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- Install required tools (engine, SDK, runtime)
+- Install your game engine/runtime
+- Install project dependencies (if applicable)
 
 ### Installation
 
@@ -33,17 +37,15 @@ git clone https://github.com/MARCIZOS/world_master.git
 cd world_master
 ```
 
-2. Install dependencies (if applicable):
+2. Install dependencies (example):
 
 ```bash
-# example
 npm install
 ```
 
-3. Run the game (adjust to your setup):
+3. Run the project (example):
 
 ```bash
-# example
 npm run dev
 ```
 
@@ -51,9 +53,10 @@ npm run dev
 
 ```text
 world_master/
-├── src/
-├── assets/
-├── docs/
+├── api/        # Backend routes and serverless functions
+├── src/        # Game/client source code
+├── assets/     # Game assets
+├── docs/       # Documentation
 └── README.md
 ```
 
@@ -63,15 +66,21 @@ world_master/
 - [ ] Multiplayer mode
 - [ ] Leaderboards
 - [ ] Save/load system
-- [ ] Add deployment and release documentation
+- [ ] Deployment and release documentation
+- [ ] In-game settings menu
 
 ## 🤝 Contributing
 
-Contributions are welcome! Fork the repo, create a feature branch, and open a pull request.
+Contributions are welcome.
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Open a pull request
 
 ## 📄 License
 
-Choose a license and add it here (e.g., MIT).
+Add a license file (for example, **MIT**) and update this section accordingly.
 
 ## 📬 Contact
 
